@@ -1,4 +1,13 @@
 package com.john.bookstore.data.local
 
-class LocalDB {
+import android.content.Context
+import androidx.room.Room
+
+object LocalDB {
+    fun createBooksDao(context: Context): BooksDao {
+        return Room.databaseBuilder(
+            context.applicationContext,
+            BooksDataBase::class.java, "book.db"
+        ).build().bookDao()
+    }
 }

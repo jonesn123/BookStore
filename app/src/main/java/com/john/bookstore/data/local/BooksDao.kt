@@ -1,6 +1,5 @@
 package com.john.bookstore.data.local
 
-import android.arch.paging.DataSource
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
@@ -8,7 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
-interface BookDao {
+interface BooksDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(book: Book?)
 
@@ -16,7 +15,7 @@ interface BookDao {
     fun deleteBooks()
 
     @Query("SELECT * FROM book")
-    fun getSearchBooks(): DataSource.Factory<Int?, Book?>?
+    fun getSearchBooks(): List<Book>
 
     @Query("SELECT * FROM detailbook WHERE isbn13 = :isbn13")
     fun getDetailBook(isbn13: String?): DetailBook?
@@ -31,19 +30,19 @@ interface BookDao {
     fun setMemo(memo: String?, isbn13: String?)
 
     @Query("UPDATE detailbook SET isLiked=:isLike WHERE isbn13 = :isbn13")
-    fun setLike(isLike: Boolean?, isbn13: String?)
+    fun setFavorite(isLike: Boolean?, isbn13: String?)
 
     @Query("SELECT * FROM detailbook WHERE isLiked = 1 ORDER BY price ASC")
-    fun getFavoriteOrderByPrice(): DataSource.Factory<Int?, DetailBook?>?
+    fun getFavoriteOrderByPrice(): List<DetailBook>
 
     @Query("SELECT * FROM detailbook WHERE isLiked = 1 ORDER BY rating DESC")
-    fun getFavoriteOrderByRating(): DataSource.Factory<Int?, DetailBook?>?
+    fun getFavoriteOrderByRating(): List<DetailBook>
 
     @Query("SELECT * FROM detailbook WHERE isLiked = 1 ORDER BY year DESC")
-    fun getFavoriteOrderByPublished(): DataSource.Factory<Int?, DetailBook?>?
+    fun getFavoriteOrderByPublished(): List<DetailBook>
 
     @Query("SELECT * FROM detailbook WHERE disableHistory = 0")
-    fun getHistoryBooks(): DataSource.Factory<Int?, DetailBook?>?
+    fun getHistoryBooks(): List<DetailBook>
 
     // Search Keyword
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -53,5 +52,5 @@ interface BookDao {
     fun deleteSearchKeyword(text: String?)
 
     @Query("SELECT * FROM searchkeyword")
-    fun getSearchKeywords(): LiveData<List<SearchKeyword?>?>?
+    fun getSearchKeywords(): List<SearchKeyword>
 }

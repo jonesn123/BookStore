@@ -1,4 +1,12 @@
 package com.john.bookstore.data.local
 
-class SeearchKeyword {
-}
+import androidx.annotation.NonNull
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
+class SearchKeyword(
+    @PrimaryKey
+    @NonNull
+    val text: String
+)
