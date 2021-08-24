@@ -1,44 +1,48 @@
 package com.john.bookstore.data.local
 
 import androidx.annotation.NonNull
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 import com.google.gson.annotations.SerializedName
 
-@Entity
-class DetailBook(
+@Entity(tableName = "detailbook")
+data class DetailBook(
     @PrimaryKey
     @NonNull
-    @SerializedName("isbn13")
+    @ColumnInfo(name = "isbn13")
     val isbn13: String,
-    @SerializedName("error")
+    @ColumnInfo(name = "error")
     val error: String,
-    @SerializedName("title")
+    @ColumnInfo(name = "title")
     val title: String,
-    @SerializedName("authors")
+    @ColumnInfo(name = "authors")
     val authors: String,
-    @SerializedName("publisher")
+    @ColumnInfo(name = "publisher")
     val publisher: String,
-    @SerializedName("language")
+    @ColumnInfo(name = "language")
     val language: String,
-    @SerializedName("isbn10")
+    @ColumnInfo(name = "isbn10")
     val isbn10: String,
-    @SerializedName("pages")
+    @ColumnInfo(name = "pages")
     val pages: String,
-    @SerializedName("year")
+    @ColumnInfo(name = "year")
     val year: String,
-    @SerializedName("rating")
+    @ColumnInfo(name = "rating")
     val rating: String,
-    @SerializedName("desc")
+    @ColumnInfo(name = "desc")
     val desc: String,
-    @SerializedName("price")
+    @ColumnInfo(name = "price")
     val price: String,
-    @SerializedName("image")
+    @ColumnInfo(name = "image")
     val image: String,
-    @SerializedName("url")
-    val storeUrl: String,
-    val isLiked: Boolean,
-    val memo: String,
-    val disableHistory: Boolean
+    @ColumnInfo(name = "url")
+    val url: String,
+    @ColumnInfo(name = "isLiked")
+    var isLiked: Boolean = false,
+    @ColumnInfo(name = "memo")
+    var memo: String? = null,
+    @ColumnInfo(name = "disableHistory")
+    var disableHistory: Boolean = false
 )

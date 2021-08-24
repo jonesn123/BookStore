@@ -1,25 +1,26 @@
 package com.john.bookstore.data.local
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 import org.jetbrains.annotations.NotNull
 
-import com.google.gson.annotations.SerializedName
-
-@Entity
-class Book(
+@Entity(tableName = "book")
+data class Book(
     @PrimaryKey
     @NotNull
-    @SerializedName("isbn13")
+    @ColumnInfo(name = "isbn13")
     val isbn13: String,
-    @SerializedName("title")
+    @ColumnInfo(name = "title")
     val title: String,
-    @SerializedName("subtitle")
+    @ColumnInfo(name = "subtitle")
     val subtitle: String,
-    @SerializedName("price")
+    @ColumnInfo(name = "price")
     val price: String,
-    @SerializedName("image")
+    @ColumnInfo(name = "image")
     val image: String,
-    @SerializedName("url")
+    @ColumnInfo(name = "url")
     val url: String
 )

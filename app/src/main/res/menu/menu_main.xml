@@ -3,8 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.john.bookstore.MainActivity">
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:id="@+id/histroy"
+        android:title="@string/history"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/bookmark"
+        android:title="@string/bookmark"
+        app:showAsAction="ifRoom"
+        android:visible="false"/>
+    <item
+        android:id="@+id/order_rating"
+        android:title="@string/order_rating"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/order_pricing"
+        android:title="@string/order_pricing"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/order_publising"
+        android:title="@string/order_published"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/deleteAll"
+        android:title="@string/delete_all"
         app:showAsAction="never" />
 </menu>

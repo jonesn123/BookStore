@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.Room
 
 object LocalDB {
-    fun createBooksDao(context: Context): BooksDao {
+    fun createDatabase(context: Context): BooksDataBase {
         return Room.databaseBuilder(
             context.applicationContext,
             BooksDataBase::class.java, "book.db"
-        ).build().bookDao()
+        ).build()
     }
 }

@@ -1,12 +1,35 @@
 <resources>
     <string name="app_name">BookStore</string>
-    <string name="action_settings">Settings</string>
+    <string name="order_rating">RATING</string>
+    <string name="order_pricing">PRICING</string>
+    <string name="order_published">PUBLISHED</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="new_books">Recent Published</string>
+    <string name="search_book">Search Book</string>
+    <string name="book_info">Book Information</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="website">WebSite</string>
 
+    <string name="liked_on">Like</string>
+    <string name="liked_off">unLike</string>
+    <string name="no_data">No Data</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="book_search">Input name of book</string>
+    <string name="there_is_no_result_of_search">There is no result of search!</string>
+    <string name="memo">memo</string>
+    <string name="save_memo">Save memo!</string>
+    <string name="price" formatted="false">Price : %s</string>
+    <string name="rating" formatted="false">Rating : %s</string>
+    <string name="authors" formatted="false">Authors : %s</string>
+    <string name="year" formatted="false">Published : %s</string>
+    <string name="pages" formatted="false">Authors : %s</string>
+    <string name="language" formatted="false">Language : %s</string>
+    <string name="isbn10" formatted="false">isbn10 : %s</string>
+    <string name="isbn13" formatted="false">isbn13 : %s</string>
+    <string name="desc" formatted="false">Description : %s</string>
+    <string name="bookmark">BOOKMARK</string>
+    <string name="history">HISTORY</string>
+    <string name="delete_all">DELETE ALL</string>
 </resources>

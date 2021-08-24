@@ -1,13 +1,9 @@
 package com.john.bookstore.data.remote
 
-import com.google.gson.annotations.SerializedName
 import com.john.bookstore.data.local.Book
 
-class NewBooksResponse(
-    @SerializedName("error")
+data class NewBooksResponse(
     val error: String,
-    @SerializedName("total")
-    val totalNum: String,
-    @SerializedName("books")
+    val total: String,
     val books: List<Book>
 )

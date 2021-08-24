@@ -10,7 +10,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import  com.john.bookstore.data.dto.Result
-import com.john.bookstore.data.local.SearchKeyword
+import com.john.bookstore.data.remote.SearchBooksResponse
 
 class BooksRepository(
     private val booksDao: BooksDao,
@@ -28,46 +28,12 @@ class BooksRepository(
         }
     }
 
-    override suspend fun getSearchBooks(query: String, page: Int): Result<List<Book>> = withContext(ioDispatcher) {
+    override suspend fun getSearchBooks(query: String, page: Int): Result<SearchBooksResponse> = withContext(ioDispatcher) {
         wrapEspressoIdlingResource {
             return@withContext try {
-                Result.Success(webService.getSearchBook(query, page).books)
+                Result.Success(webService.getSearchBook(query, page))
             } catch (e: Exception) {
                 Result.Error(e.message)
-            }
-        }
-    }
-
-    override suspend fun getSearchKeywords(): Result<List<SearchKeyword>> = withContext(ioDispatcher) {
-        wrapEspressoIdlingResource {
-            return@withContext try {
-                Result.Success(booksDao.getSearchKeywords())
-            } catch (e: Exception) {
-                Result.Error(e.message)
-            }
-        }
-    }
-
-    override suspend fun insertSearchKeyword(keyword: SearchKeyword) {
-        withContext(ioDispatcher) {
-            wrapEspressoIdlingResource {
-                try {
-                    booksDao.insert(keyword)
-                } catch (e: Exception) {
-                    Log.e(TAG, "failed insertSearchKeyword : ${e.message}")
-                }
-            }
-        }
-    }
-
-    override suspend fun deleteSearchKeyword(query: String) {
-        withContext(ioDispatcher) {
-            wrapEspressoIdlingResource {
-                try {
-                    booksDao.deleteSearchKeyword(query)
-                } catch (e: Exception) {
-                    Log.e(TAG, "failed insertSearchKeyword : ${e.message}")
-                }
             }
         }
     }
@@ -75,10 +41,17 @@ class BooksRepository(
     override suspend fun getBookInfo(isbn13: String): Result<DetailBook> =
         withContext(ioDispatcher) {
             wrapEspressoIdlingResource {
-                return@withContext try {
-                    Result.Success(webService.getBookInformation(isbn13))
-                } catch (e: Exception) {
-                    Result.Error(e.message)
+                var detailBook = booksDao.getDetailBook(isbn13)
+                return@withContext if (detailBook != null) {
+                    Result.Success(detailBook)
+                } else {
+                    try {
+                        detailBook = webService.getBookInformation(isbn13)
+                        addHistory(detailBook)
+                        Result.Success(detailBook)
+                    } catch (e: Exception) {
+                        Result.Error(e.message)
+                    }
                 }
             }
         }
@@ -121,11 +94,11 @@ class BooksRepository(
         }
     }
 
-    override suspend fun deleteHistory(isbn13: String) {
+    override suspend fun deleteAllHistory() {
         withContext(ioDispatcher) {
             wrapEspressoIdlingResource {
                 try {
-                    booksDao.deleteHistory(isbn13)
+                    booksDao.deleteAllHistory()
                 } catch (e: Exception) {
                     Log.e(TAG, "failed deleteHistory : ${e.message}")
                 }
@@ -140,6 +113,18 @@ class BooksRepository(
                     booksDao.setFavorite(isLike, isbn13)
                 } catch (e: Exception) {
                     Log.e(TAG, "failed setFavorite : ${e.message}")
+                }
+            }
+        }
+    }
+
+    override suspend fun saveMemo(memo: String, isbn13: String) {
+        withContext(ioDispatcher) {
+            wrapEspressoIdlingResource {
+                try {
+                    booksDao.setMemo(memo, isbn13)
+                } catch (e: Exception) {
+                    Log.e(TAG, "failed setMemo : ${e.message}")
                 }
             }
         }

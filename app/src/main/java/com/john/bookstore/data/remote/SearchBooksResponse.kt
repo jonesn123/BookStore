@@ -7,9 +7,9 @@ class SearchBooksResponse(
     @SerializedName("error")
     val error: String,
     @SerializedName("total")
-    val totalNum: String,
+    val totalNum: String? = null,
     @SerializedName("page")
-    val page: String,
+    val page: String? = null,
     @SerializedName("books")
     val books: List<Book>
 )
