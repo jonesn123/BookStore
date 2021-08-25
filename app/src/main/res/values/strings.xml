@@ -4,9 +4,9 @@
     <string name="order_pricing">PRICING</string>
     <string name="order_published">PUBLISHED</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="new_books">Recent Published</string>
-    <string name="search_book">Search Book</string>
-    <string name="book_info">Book Information</string>
+    <string name="new_books">RECENT PUBLISHED</string>
+    <string name="search_book">SEARCH</string>
+    <string name="book_info">BOOK INFORMATION</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="website">WebSite</string>
