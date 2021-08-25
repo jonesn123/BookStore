@@ -53,4 +53,4 @@ This application is about my BookStore.
 <h2> project milestone </h2>
 <div>
 
-https://github.com/jonesn123/BookStore/milestones?with_issues=no
+- https://github.com/jonesn123/BookStore/milestones?with_issues=no
