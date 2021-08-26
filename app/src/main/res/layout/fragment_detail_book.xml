@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.john.bookstore.detailbook.DetailBookViewModel" />
@@ -67,7 +66,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/favorite_btn"
-                        android:src="@drawable/ic_star_outline" />
+                        android:src="@android:drawable/star_big_off" />
 
                 </androidx.constraintlayout.motion.widget.MotionLayout>
                 </LinearLayout>

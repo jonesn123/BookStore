@@ -21,6 +21,9 @@ class DetailBookViewModel @Inject constructor(
     private val _book = MutableLiveData<DetailBook>()
     val book: LiveData<DetailBook> = _book
 
+    private val _sendNotify = MutableLiveData<DetailBook>()
+    val sendNotify: LiveData<DetailBook> = _sendNotify
+
     fun fetchBookInformation(isbn13: String) {
         showLoading.value = true
         viewModelScope.launch {
@@ -38,6 +41,9 @@ class DetailBookViewModel @Inject constructor(
     fun toggleLiked(isbn13: String) {
         val book = _book.value
         if (book != null) {
+            if (!book.isLiked) {
+                _sendNotify.value = book
+            }
             viewModelScope.launch {
                 repository.setFavorite(!book.isLiked, isbn13)
                 fetchBookInformation(isbn13)

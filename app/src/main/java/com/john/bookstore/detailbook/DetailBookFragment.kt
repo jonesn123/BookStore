@@ -14,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import com.john.bookstore.R
 import com.john.bookstore.base.BaseFragment
 import com.john.bookstore.databinding.FragmentDetailBookBinding
+import com.john.bookstore.utils.sendNotification
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -65,6 +66,18 @@ class DetailBookFragment : BaseFragment() {
             intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
             startActivity(intent)
         }
+
+        _viewModel.book.observe(viewLifecycleOwner, {
+            if (it.isLiked) {
+                binding.image.setImageResource(android.R.drawable.star_big_on)
+            } else {
+                binding.image.setImageResource(android.R.drawable.star_big_off)
+            }
+        })
+
+        _viewModel.sendNotify.observe(viewLifecycleOwner, {
+            sendNotification(requireContext(), it)
+        })
     }
 
     override fun onResume() {
