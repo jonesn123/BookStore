@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -69,9 +68,9 @@ class DetailBookFragment : BaseFragment() {
 
         _viewModel.book.observe(viewLifecycleOwner, {
             if (it.isLiked) {
-                binding.image.setImageResource(android.R.drawable.star_big_on)
+                binding.image.setImageResource(R.drawable.outline_favorite)
             } else {
-                binding.image.setImageResource(android.R.drawable.star_big_off)
+                binding.image.setImageResource(R.drawable.outline_favorite_border)
             }
         })
 
