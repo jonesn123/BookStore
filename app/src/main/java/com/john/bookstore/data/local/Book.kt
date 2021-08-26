@@ -21,6 +21,7 @@ data class Book(
     val price: String,
     @ColumnInfo(name = "image")
     val image: String,
-    @ColumnInfo(name = "url")
-    val url: String
+    @ColumnInfo(name = "link")
+    @Json(name = "url")
+    val link: String
 )

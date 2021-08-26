@@ -61,7 +61,7 @@ class DetailBookFragment : BaseFragment() {
         }
 
         binding.toWeb.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(_viewModel.book.value?.url))
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(_viewModel.book.value?.link))
             intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
             startActivity(intent)
         }

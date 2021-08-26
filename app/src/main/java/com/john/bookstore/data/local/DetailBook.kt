@@ -6,6 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 @Entity(tableName = "detailbook")
 data class DetailBook(
@@ -37,8 +38,9 @@ data class DetailBook(
     val price: String,
     @ColumnInfo(name = "image")
     val image: String,
-    @ColumnInfo(name = "url")
-    val url: String,
+    @ColumnInfo(name = "link")
+    @Json(name = "url")
+    val link: String,
     @ColumnInfo(name = "isLiked")
     var isLiked: Boolean = false,
     @ColumnInfo(name = "memo")

@@ -16,7 +16,7 @@ class BooksAdapter(callback: (book: Book) -> Unit): BaseRecyclerViewAdapter<Book
 
         holder.itemView.findViewById<TextView>(R.id.toWeb)?.setOnClickListener {
             val book = getItem(position)
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(book.url))
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(book.link))
             intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
             holder.itemView.context.startActivity(intent)
         }
