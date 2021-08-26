@@ -62,7 +62,7 @@ object BindingAdapters {
     @JvmStatic
     fun setImage(imageView: ImageView, url: String?) {
         url?.let {
-            Glide.with(imageView).load(it).into(imageView)
+            Glide.with(imageView).load(it).placeholder(R.drawable.placeholder).into(imageView)
         }
     }
 }
