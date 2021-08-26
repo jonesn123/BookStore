@@ -28,12 +28,49 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
                 <ImageView
                     android:id="@+id/detail_image"
                     android:layout_width="200dp"
                     android:layout_height="300dp"
-                    android:image="@{viewModel.book.image}"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:image="@{viewModel.book.image}" />
+
+
+                <androidx.constraintlayout.motion.widget.MotionLayout
+                    android:id="@+id/motion_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutDescription="@xml/motion">
+                    <ToggleButton
+                        android:id="@+id/favorite_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:checked="@{viewModel.book.liked}"
+                        android:textOff="@string/liked_on"
+                        android:textOn="@string/liked_off"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/favorite_btn"
+                        android:src="@drawable/ic_star_outline" />
+
+                </androidx.constraintlayout.motion.widget.MotionLayout>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -120,20 +157,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <ToggleButton
-                android:id="@+id/favorite_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="16dp"
-                android:checked="@{viewModel.book.liked}"
-                android:textOff="@string/liked_on"
-                android:textOn="@string/liked_off"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layout_content" />
-
-
             <TextView
                 android:id="@+id/desc"
                 android:layout_width="wrap_content"
@@ -143,7 +166,7 @@
                 android:textSize="14sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/favorite_btn"
+                app:layout_constraintTop_toBottomOf="@id/layout_content"
                 tools:text="Description : The Desc" />
 
             <LinearLayout

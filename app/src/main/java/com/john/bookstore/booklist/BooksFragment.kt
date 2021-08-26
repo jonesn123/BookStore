@@ -106,7 +106,7 @@ class BooksFragment : BaseFragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun setMenuVisibility(item: MenuItem) {
+    private fun setMenuVisibility(item: MenuItem) {
         when(item.itemId) {
             R.id.histroy -> {
                 menu.forEach {
