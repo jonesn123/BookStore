@@ -20,8 +20,12 @@ class BookSearchViewModel @Inject constructor(
 
     val books = MutableLiveData<List<Book>>()
     val isLastPage = MutableLiveData<Boolean>()
+    val bookList = ArrayList<Book>()
 
     fun searchBook(query: String, page: Int) {
+        if (page == 1) {
+            bookList.clear()
+        }
         showLoading.value = true
         viewModelScope.launch {
             val result = repository.getSearchBooks(
@@ -36,7 +40,6 @@ class BookSearchViewModel @Inject constructor(
                             response.page.toInt().times(10) * 10 >= response.totalNum.toInt()
                     }
 
-                    val bookList = ArrayList<Book>()
                     bookList.addAll(response.books)
                     books.value = bookList
                 }

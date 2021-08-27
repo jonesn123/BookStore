@@ -26,17 +26,6 @@ object BindingAdapters {
         }
     }
 
-    @Suppress("UNCHECKED_CAST")
-    @BindingAdapter("android:addItem")
-    @JvmStatic
-    fun <T> addRecyclerViewData(recyclerView: RecyclerView, items: LiveData<List<T>>?) {
-        items?.value?.let { itemList ->
-            (recyclerView.adapter as? BaseRecyclerViewAdapter<T>)?.apply {
-                addData(itemList)
-            }
-        }
-    }
-
     /**
      * Use this binding adapter to show and hide the views using boolean variables
      */
