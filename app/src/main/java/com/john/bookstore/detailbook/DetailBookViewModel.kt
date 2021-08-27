@@ -24,6 +24,8 @@ class DetailBookViewModel @Inject constructor(
     private val _sendNotify = MutableLiveData<DetailBook>()
     val sendNotify: LiveData<DetailBook> = _sendNotify
 
+    val memo = MutableLiveData<String>()
+
     fun fetchBookInformation(isbn13: String) {
         showLoading.value = true
         viewModelScope.launch {
