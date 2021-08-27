@@ -12,13 +12,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp">
+        android:padding="@dimen/margin_small">
 
         <ImageView
             android:id="@+id/image"
             android:layout_width="100dp"
             android:layout_height="150dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/margin_medium"
             android:image="@{item.image}"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{item.title}"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_size_large"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/subtitle"
             app:layout_constraintStart_toEndOf="@id/image"
@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{item.subtitle}"
-            android:textSize="12sp"
+            android:textSize="@dimen/text_size_small"
             app:layout_constraintBottom_toTopOf="@id/price"
             app:layout_constraintStart_toEndOf="@id/image"
             app:layout_constraintTop_toBottomOf="@+id/title"
@@ -55,7 +55,7 @@
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/margin_medium"
             android:text="@{item.price}"
             app:layout_constraintBottom_toTopOf="@id/toWeb"
             app:layout_constraintStart_toEndOf="@id/image"
@@ -66,11 +66,11 @@
             android:id="@+id/toWeb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/margin_normal"
             android:text="@string/website"
             android:textAppearance="@style/Widget.AppCompat.Spinner.Underlined"
             android:textColor="@android:color/holo_red_dark"
-            android:textSize="14sp"
+            android:textSize="@dimen/text_size_normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/image"
             app:layout_constraintTop_toBottomOf="@id/price" />

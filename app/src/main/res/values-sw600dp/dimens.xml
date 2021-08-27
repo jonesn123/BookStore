@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_normal">128dp</dimen>
+    <dimen name="margin_medium">64dp</dimen>
+    <dimen name="margin_small">32dp</dimen>
+</resources>
