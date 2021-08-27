@@ -11,6 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import  com.john.bookstore.data.dto.Result
 import com.john.bookstore.data.remote.SearchBooksResponse
+import timber.log.Timber
 
 class BooksRepository(
     private val booksDao: BooksDao,
@@ -88,7 +89,7 @@ class BooksRepository(
                 try {
                     booksDao.insert(detailBook)
                 } catch (e: Exception) {
-                    Log.e(TAG, "failed addHistory : ${e.message}")
+                    Timber.tag(TAG).e("failed addHistory : ${e.message}")
                 }
             }
         }
@@ -100,7 +101,7 @@ class BooksRepository(
                 try {
                     booksDao.deleteAllHistory()
                 } catch (e: Exception) {
-                    Log.e(TAG, "failed deleteHistory : ${e.message}")
+                    Timber.tag(TAG).e("failed deleteHistory : ${e.message}")
                 }
             }
         }
@@ -112,7 +113,7 @@ class BooksRepository(
                 try {
                     booksDao.setFavorite(isLike, isbn13)
                 } catch (e: Exception) {
-                    Log.e(TAG, "failed setFavorite : ${e.message}")
+                    Timber.tag(TAG).e("failed setFavorite : ${e.message}")
                 }
             }
         }
@@ -124,7 +125,7 @@ class BooksRepository(
                 try {
                     booksDao.setMemo(memo, isbn13)
                 } catch (e: Exception) {
-                    Log.e(TAG, "failed setMemo : ${e.message}")
+                    Timber.tag(TAG).e("failed setMemo : ${e.message}")
                 }
             }
         }
